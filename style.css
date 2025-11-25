@@ -1,0 +1,334 @@
+/* Adicionei a fonte 'Fredoka' que é mais gordinha/arredondada para os títulos */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* PALETA PADARIA */
+    --primary-color: #d68c45; /* Cor de pão assado/caramelo */
+    --secondary-color: #5d4037; /* Marrom café (texto principal) */
+    --tertiary-color: #f4e1d2; /* Bege areia (detalhes) */
+    --accent-color: #ffb7b2;  /* Rosa claro (para detalhes fofos) */
+    --bg-color: #fffbf0;      /* Creme suave (fundo da página) */
+    --card-bg: #ffffff;       /* Branco para os cartões de receita */
+}
+
+body {
+    margin: 0;
+    /* Fundo creme com bolinhas (polka dots) feitas em CSS puro */
+    background-color: var(--bg-color);
+    background-image: radial-gradient(var(--tertiary-color) 20%, transparent 20%);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+    
+    color: var(--secondary-color);
+    font-family: "Quicksand", sans-serif;
+}
+
+header {
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centralizei para ficar mais elegante */
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95); /* Fundo branco levemente transparente */
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(214, 140, 69, 0.15); /* Sombra suave laranja */
+    gap: 1rem;
+    border-bottom: 2px dashed var(--tertiary-color); /* Borda tracejada estilo costura/cupcake */
+}
+
+header h1 {
+    font-family: "Fredoka", sans-serif; /* Fonte gordinha */
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+/* Adiciona um croissant antes do título automaticamente */
+header h1::before {
+    content: "🥐 "; 
+}
+/* Adiciona um pão depois do título automaticamente */
+header h1::after {
+    content: " 🥖"; 
+}
+
+div input {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px; /* Bordas totalmente redondas */
+    border: 2px solid var(--tertiary-color);
+    background: #fff;
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 30rem;
+    color: var(--secondary-color);
+    margin-right: .5rem;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+}
+
+div input::placeholder {
+    font-size: 1rem;
+    color: #ccafa5;
+}
+
+div input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(214, 140, 69, 0.1);
+}
+
+#botao-busca {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-family: "Fredoka", sans-serif; /* Fonte gordinha no botão */
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(214, 140, 69, 0.2);
+}
+
+#botao-busca:hover {
+    background-color: #c57b3a;
+    transform: translateY(-2px); /* O botão "pula" pra cima */
+    box-shadow: 0 6px 10px rgba(214, 140, 69, 0.3);
+}
+
+#botao-busca:active {
+    transform: scale(0.95);
+}
+
+main {
+    max-width: 60rem; /* Um pouco mais estreito para parecer um cardápio */
+    margin: 2rem auto;
+    padding: 0 1rem;
+    height: auto; /* Removi o scroll forçado para a página fluir melhor */
+    overflow-y: visible;
+}
+
+article {
+    background: var(--card-bg);
+    border-radius: 20px; /* Cartões arredondados */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(93, 64, 55, 0.05); /* Sombra suave */
+    border: 1px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-bottom: 4px solid var(--tertiary-color); /* Efeito 3D sutil na borda de baixo */
+}
+
+article:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(214, 140, 69, 0.15);
+    border-bottom-color: var(--primary-color);
+}
+
+article h2 {
+    margin-top: 0;
+    font-family: "Fredoka", sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+article p {
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #795548; /* Marrom mais claro */
+}
+
+article p strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Footer estilo "recibo" ou rodapé de menu */
+.footer {
+    position: relative; 
+    margin-top: 4rem;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    padding: 2rem;
+    font-family: "Fredoka", sans-serif;
+}
+
+.footer-links a {
+    color: var(--tertiary-color);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Ajustes Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+
+    div input {
+        width: 100%;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+/* --- ESTILO DO SLIDESHOW --- */
+/* --- ESTILO DO SLIDESHOW --- */
+.hero-slideshow {
+    position: relative;
+    width: 100%;
+    /* MUDOU AQUI: Aumentei de 300px para 450px */
+    height: 450px; 
+    
+    /* MUDOU AQUI: Bordas bem redondinhas para combinar com os cards */
+    border-radius: 30px; 
+    
+    /* O overflow: hidden é essencial aqui para cortar a imagem nas pontas redondas */
+    overflow: hidden; 
+    
+    margin-bottom: 2rem;
+    
+    /* Deixei a sombra um pouquinho mais marcada para dar destaque */
+    box-shadow: 0 8px 20px rgba(214, 140, 69, 0.25); 
+
+    /* Opcional: Adicionei uma borda branca grossa para parecer um quadro ou foto Polaroid */
+    border: 5px solid #fff; 
+}
+
+/* O restante do CSS do slideshow (.slide, .overlay-texto) continua igual... */
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir tudo sem distorcer */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1; /* Só a imagem ativa aparece */
+}
+
+.overlay-texto {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    backdrop-filter: blur(5px);
+}
+
+.overlay-texto h2 { margin: 0; font-family: "Fredoka", sans-serif; }
+
+/* --- ESTILO DOS FILTROS (TAGS) --- */
+#container-filtros {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.tag-btn {
+    background: #fff;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    font-family: "Quicksand", sans-serif;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.tag-btn:hover {
+    background: var(--tertiary-color);
+    transform: translateY(-2px);
+}
+
+.tag-btn.ativo {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* --- ESTILO DO MODAL (SOBRE MIM) --- */
+.modal-container {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 64, 55, 0.6); /* Fundo escuro transparente */
+    backdrop-filter: blur(3px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    border: 4px solid var(--tertiary-color);
+    animation: popup 0.3s ease-out;
+}
+
+@keyframes popup {
+    from {transform: scale(0.7); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.foto-perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: var(--tertiary-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fechar-modal:hover { color: var(--primary-color); }
+
+/* Classe para mostrar o modal via JS */
+.modal-container.mostrar {
+    display: flex;
+}

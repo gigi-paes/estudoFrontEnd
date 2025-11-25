@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Padaria Artesanal</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Receitas da Ana</h1>
+        
+        <div>
+            <input type="text" placeholder="O que vamos assar hoje?">
+            <button id="botao-busca">Buscar</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-slideshow">
+            <img src="img/banner-1.jpeg" class="slide active" alt="Pães artesanais na vitrine">
+            <img src="img/banner-2.jpg" class="slide" alt="Croissants enfileirados">
+            <img src="img/banner-3.jpg" class="slide" alt="Bolo artesanal">
+            <img src="img/banner-4.webp" class="slide" alt="Pães franceses enfileirados">
+            <img src="img/banner-5.jpg" class="slide" alt="Padeiros exibidos">
+            <img src="img/banner-6.jpg" class="slide" alt="Padaria bonitinha">
+            <img src="img/banner-7.jpg" class="slide" alt="Confeiteira confeitando">
+            
+            <div class="overlay-texto">
+                <h2>O melhor da padaria artesanal</h2>
+                <p>Feito à mão, com coração.</p>
+            </div>
+        </section>
+
+        <div id="container-filtros"></div>
+
+        <div id="modal-sobre" class="modal-container">
+            <div class="modal-content">
+                <span class="fechar-modal">&times;</span>
+                <img src="https://ui-avatars.com/api/?name=Ana+Padaria&background=d68c45&color=fff&size=128" alt="Foto da Ana" class="foto-perfil">
+                <h3>Olá, eu sou a Ana! 👩‍🍳</h3>
+                <p>Bem-vindo à minha cozinha virtual! Aqui eu compartilho as receitas que aprendi com minha avó e as que inventei nas madrugadas de inspiração.</p>
+                <p>Sinta o cheiro de pão quentinho e fique à vontade!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-location">Feito com muito amor e farinha 🌾</p>
+        <ul class="footer-links">
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+        <p>&copy; 2024 Padaria Artesanal</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
