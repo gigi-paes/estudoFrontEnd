@@ -16,10 +16,8 @@ if (!cardContainer) {
 
 async function carregarDados() {
     try {
-        let response = await fetch("/data/receitas.json");
-
+        let response = await fetch("./public/data/receitas.json");
         if (!response.ok) throw new Error("Erro ao carregar JSON");
-
         dados = await response.json();
 
         gerarBotoesFiltro(dados);
