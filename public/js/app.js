@@ -16,7 +16,7 @@ if (!cardContainer) {
 
 async function carregarDados() {
     try {
-        let response = await fetch("./data.json");
+        let response = await fetch("/data/receitas.json");
 
         if (!response.ok) throw new Error("Erro ao carregar JSON");
 
@@ -35,6 +35,54 @@ async function carregarDados() {
         console.error("Falha ao carregar dados:", err);
     }
 }
+
+// =============================
+//    AUTOCOMPLETE (SUGESTÕES) ✨
+// =============================
+const listaSugestoes = document.getElementById('lista-sugestoes');
+
+campoBusca.addEventListener('input', function() {
+    const termo = this.value.toLowerCase().trim();
+    listaSugestoes.innerHTML = ''; // Limpa sugestões anteriores
+
+    // Se digitou menos de 2 letras, não sugere nada (pra não ficar piscando)
+    if (termo.length < 2) return;
+
+    // Filtra as receitas (Procura no Título)
+    const sugestoes = dados.filter(receita => 
+        receita.titulo.toLowerCase().includes(termo)
+    );
+
+    // Pega só as 5 primeiras para não poluir
+    const top5 = sugestoes.slice(0, 5);
+
+    // Cria os itens na tela
+    top5.forEach(receita => {
+        const li = document.createElement('li');
+        
+        // Mostra Título e um ícone fofo
+        li.innerHTML = `
+            <span>${receita.titulo}</span>
+            <span style="font-size: 0.8rem; color: #999;">📝 Ver receita</span>
+        `;
+
+        // Quando clicar na sugestão
+        li.onclick = () => {
+            campoBusca.value = receita.titulo; // Preenche o input
+            listaSugestoes.innerHTML = '';     // Some com a lista
+            iniciarBusca();                    // Faz a busca real e mostra o card
+        };
+
+        listaSugestoes.appendChild(li);
+    });
+});
+
+// Fecha a lista se clicar fora dela
+document.addEventListener('click', function(e) {
+    if (!campoBusca.contains(e.target) && !listaSugestoes.contains(e.target)) {
+        listaSugestoes.innerHTML = '';
+    }
+});
 
 function gerarBotoesFiltro(lista) {
     const tagsUnicas = new Set();
@@ -55,13 +103,13 @@ function gerarBotoesFiltro(lista) {
     containerFiltros.appendChild(divTodas);
 
     const dicionario = {
-        "Doces & Sobremesas 🍩": ["biscoito", "bolo", "brownie", "cacau", "caramelo", "chocolate", "cinnamon roll", "cookie", "doce", "doce de leite", "doce-salgado", "donut", "eclair", "fruta", "frutas", "frutas vermelhas", "gelado", "goiabada", "muffin", "pão doce", "sobremesa", "torta"],
+        "Doces & Sobremesas 🍩": ["confeitaria", "biscoito", "bolo", "brownie", "cacau", "caramelo", "chocolate", "cinnamon roll", "cookie", "doce", "doce de leite", "doce-salgado", "donut", "eclair", "fruta", "frutas", "frutas vermelhas", "gelado", "goiabada", "muffin", "pão doce", "sobremesa", "torta"],
         "Pães & Padaria 🥖": ["baguete", "brioche", "fermentação", "fermentação lenta", "fermentação natural", "focaccia", "integral", "pré-fermento", "pão", "pão de queijo", "pão enriquecido", "pão recheado", "pão rústico", "pão salgado", "sourdough", "levain"],
         "Salgados & Refeições 🧀": ["almoço", "carne", "carne seca", "frango", "lanche", "queijo", "salgado", "empada", "quiche", "sanduíche"],
         "Culinária Internacional 🌍": ["alemão", "americano", "brasileiro", "clássico brasileiro", "europeu", "francês", "inglês", "internacional", "italiano", "mediterrâneo", "mineiro", "português", "árabe", "australiano"],
-        "Ingredientes & Sabores 🧂": ["alcoólico", "azeite", "café", "canela", "castanhas", "centeio", "coco", "cítrico", "grãos", "laranja", "limão", "manteiga", "nozes", "pistache", "multigrãos", "mandioca", "milho", "gema", "vegetal", "vegetariano", "refrescante", "saboroso", "aromático"],
-        "Técnicas & Características 🧪": ["alta hidratação", "artesanal", "assado", "frito", "fritura", "sem forno", "sem glúten", "enriquecido", "especial", "especialidade", "especiarias", "fitness", "funcional", "folhado", "croissant", "choux", "rápido", "rústico", "tradicional", "macio", "semente"],
-        "Ocasiões & Temas 🎉": ["café da manhã", "café da tarde", "chá da tarde", "festa", "outono", "gourmet"]
+        "Ingredientes & Sabores 🧂": ["alcoólico", "azeite", "café", "canela", "castanhas", "centeio", "coco", "cítrico", "grãos", "laranja", "limão", "manteiga", "nozes", "pistache", "multigrãos", "mandioca", "milho", "gema", "vegetal", "vegetariano", "refrescante", "saboroso", "aromático", "saudável"],
+        "Técnicas & Características 🧪": ["clássico", "alta hidratação", "artesanal", "assado", "frito", "fritura", "sem forno", "sem glúten", "enriquecido", "especial", "especialidade", "especiarias", "fitness", "funcional", "folhado", "croissant", "choux", "rápido", "rústico", "tradicional", "macio", "semente"],
+        "Ocasiões & Temas 🎉": ["café da manhã", "café da tarde", "chá da tarde", "festa", "outono", "gourmet","aperitivo", "mar"]
     };
 
     let gavetas = {
@@ -284,6 +332,8 @@ window.onclick = (e) => {
     if (e.target === modalSobre) fecharModal(modalSobre);
     if (e.target === modalContato) fecharModal(modalContato);
 };
+
+
 
 window.addEventListener("load", carregarDados);
 campoBusca.addEventListener("keyup", iniciarBusca);

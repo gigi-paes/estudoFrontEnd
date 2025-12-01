@@ -601,3 +601,56 @@ details[open] summary::after {
         gap: 0.5rem;
     }
 }
+
+/* =========================================
+   11. AUTOCOMPLETE (SUGESTÕES DE BUSCA)
+   ========================================= */
+
+/* O container que segura o input e a lista */
+.search-wrapper {
+    position: relative; /* Importante para a lista absoluta funcionar */
+    display: flex;
+    align-items: center;
+}
+
+/* A caixa de sugestões (começa vazia/invisível) */
+.sugestoes-box {
+    position: absolute;
+    top: 100%; /* Fica logo abaixo do input */
+    left: 15px; /* Alinhado levemente à direita da borda */
+    background: #fff;
+    width: 30rem; /* Mesma largura do input aproximadamente */
+    max-width: 90vw;
+    border-radius: 0 0 15px 15px; /* Arredonda só embaixo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000; /* Fica por cima de tudo */
+    overflow: hidden;
+    border: 1px solid var(--tertiary-color);
+    border-top: none;
+}
+
+/* Cada item da lista */
+.sugestoes-box li {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 1px dashed #eee;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sugestoes-box li:hover {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Esconde a lista se estiver vazia */
+.sugestoes-box:empty {
+    display: none;
+}
