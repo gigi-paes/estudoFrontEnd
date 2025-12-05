@@ -2,7 +2,7 @@
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Concluído-brightgreen)
 
-> Um catálogo interativo e delicioso de receitas, desenvolvido durante a Imersão da Alura com o Google Gemini.
+> Um catálogo interativo e delicioso de receitas, desenvolvido durante a Imersão da Alura.
 
 ---
 
@@ -10,9 +10,9 @@
 
 Bem-vindo à **Padaria Artesanal**!
 
-Este projeto é uma aplicação Front-end que simula um livro de receitas digital. O objetivo foi criar uma interface responsiva, amigável e funcional, onde o usuário pode buscar inspirações culinárias através de um sistema de busca inteligente ou navegando por categorias dinâmicas.
+Este projeto é uma aplicação Front-end que simula um livro de receitas digital. O objetivo foi criar uma interface responsiva, amigável e funcional, onde o usuário pode buscar receitas através de um sistema de busca ou navegando por categorias.
 
-Apesar de ser um site estático, ele consome dados de um arquivo JSON robusto (com mais de 100 receitas!) gerado via IA, simulando o consumo de uma API real.
+Apesar de ser um site estático, ele consome dados de um arquivo JSON robusto (com mais de 100 receitas!) gerado via google ai studio, simulando o consumo de uma API real.
 
 🌐 **Acesse o projeto online:** [Clique aqui para visitar a Padaria!](https://gigi-paes.github.io/estudoFullstack/)
 
